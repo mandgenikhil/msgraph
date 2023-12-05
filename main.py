@@ -15,7 +15,7 @@ def notification_url():
     return response
 
 @app.route('/',methods=['POST'])
-def notification_url():
+def notification_url_post():
     validationToken = request.args.get('validationToken')
     data = validationToken
     #Call yout appian REST API
