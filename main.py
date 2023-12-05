@@ -5,10 +5,12 @@ app = Flask(__name__)
 def notification_url():
     validationToken = request.args.get('validationToken')
     data = validationToken
+    #Call yout appian REST API
+    #     
     response = app.response_class(
         response=json.dumps(data),
         status=200,
-        mimetype='application/json'
+        mimetype='text/plain'
     ) 
     return response   
     # return Response(data=validationToken,content_type="text/plain"),200
