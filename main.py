@@ -1,4 +1,5 @@
 from flask import Flask,Response,request,json
+from urllib.parse import unquote
 app = Flask(__name__)
 
 @app.route('/',methods=['GET'])
@@ -17,11 +18,10 @@ def notification_url():
 @app.route('/',methods=['POST'])
 def notification_url_post():
     validationToken = request.args.get('validationToken')
-    data = validationToken
-    #Call yout appian REST API
-    #     
+    data = unquote(validationToken)
+    #Call yout appian REST API    
     response = app.response_class(
-        response=json.dumps(data),
+        response=data,
         status=200,
         mimetype='text/plain'
     ) 
